@@ -1,0 +1,241 @@
+
+\usepackage[left=4.5cm, width=14.00cm, height=21.00cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{paracol}
+\usepackage{xparse}
+\usepackage{sidecap}
+\usepackage[makeroom]{cancel}
+\usepackage{capt-of}
+\usepackage{caption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xpatch}
+\usepackage{subcaption}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{imakeidx}
+\usepackage{wrapfig}
+\usepackage{marginnote}
+\usepackage{ upgreek }
+\usepackage{bm}
+\usepackage{enumerate}
+\usepackage{mathrsfs} 
+
+\graphicspath{{Images/}}
+
+
+\makeindex[columns=3, title=Indice Analitico, intoc]
+
+\captionsetup{font = {it, small}, labelfont={color=NavyBlue, bf}}
+
+
+
+\renewcommand{\L}{\mathscr{L}}
+\newcommand{\aL}{\mathscr{L}^{-1}}
+\newcommand{\laplace}[1]{\mathscr{L} \left\{ #1 \right\}}
+\newcommand{\antilaplace}[1]{\mathscr{L}^{-1} \left[ #1 \right]}
+\newcommand{\re}[1]{\textrm{Re}\left(#1\right)}
+\newcommand{\im}[1]{\textrm{Im}\left(#1\right)}
+\newcommand{\lapint}{\int_{0^-}^\infty}
+
+
+
+\newcommand{\de}[1]{\textbf{\textcolor{NavyBlue}{#1}}}
+
+\newcommand{\figura}[5]{\begin{SCfigure}[#2][b!h!t!]
+		\centering
+		\includegraphics[width=#1 cm]{#3}
+		\caption{#4} \label{#5}
+\end{SCfigure}}
+
+
+
+
+
+\newcommand{\bfcolor}[1]{\renewcommand*{\textbf}[1]{{\bfseries {\color{#1}##1}}}}
+
+\setcolumnwidth{0.3\textwidth}
+
+
+
+\newcounter{concetti}
+\newenvironment{concetto}{
+	
+	\bfcolor{NavyBlue}
+	\refstepcounter{concetti}
+	{\color{NavyBlue}\textbf{Concetto \theconcetti:}} \quad
+}{
+}
+\numberwithin{concetti}{chapter}
+\tcolorboxenvironment{concetto}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!90!NavyBlue},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{NavyBlue},
+	sharp corners,
+	before skip=5pt,
+	after skip=10pt,
+	breakable,
+}
+
+\newcounter{teoremi}
+\newenvironment{teorema}[2]{
+	\bfcolor{ForestGreen}
+	\refstepcounter{teoremi}
+	\textbf{Concetto \theteoremi #1} 
+	\vspace{3mm} 
+	
+	\texttt{Ipotesi: } #2
+	
+	\vspace{3mm} 
+	
+	\texttt{Enunciato}: 
+}{
+}
+\numberwithin{teoremi}{chapter}
+\tcolorboxenvironment{teorema}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!100!ForestGreen},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{ForestGreen},
+	sharp corners,
+	before skip=5pt,
+	after skip=10pt,
+	breakable,
+}
+
+
+\newenvironment{dimostrazione}{
+	\bfcolor{Orchid}
+	\textbf{Dimostrazione} \quad
+}{ }
+\tcolorboxenvironment{dimostrazione}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!100!NavyBlue},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{Orchid},
+	sharp corners,
+	before skip=5pt,
+	after skip=10pt,
+	breakable,
+}
+
+\newenvironment{osservazione}{
+	\bfcolor{BurntOrange}
+	\textbf{Osservazione: }
+}{ }
+\tcolorboxenvironment{osservazione}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!100!BurntOrange},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{BurntOrange},
+	sharp corners,
+	before skip=5pt,
+	after skip=10pt,
+	breakable,
+}
+
+\newenvironment{note}{
+	\bfcolor{CadetBlue}
+	\textbf{Note: }
+}{ }
+\tcolorboxenvironment{note}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!100!CadetBlue},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{CadetBlue},
+	sharp corners,
+	before skip=5pt,
+	after skip=10pt,
+	breakable,
+}
+
+
+
+
+\newcounter{numdem}
+\numberwithin{numdem}{chapter}
+\newenvironment{demonstration}{
+	\noindent
+	\refstepcounter{numdem}
+	
+%	\renewcommand{\de}[1]{ { \color{ForestGreen} \textbf{#1} } }
+	
+	{\color{ForestGreen}\textbf{Demonstration \thenumdem:}}
+}{
+}
+\tcolorboxenvironment{demonstration}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!90!ForestGreen},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{ForestGreen},
+	sharp corners,
+	before skip=5pt,
+	after skip=5pt,
+	breakable,
+}
+
+\newcounter{exercises}
+\numberwithin{exercises}{chapter}
+\newenvironment{exercise}[1]{
+	\bfcolor{Periwinkle}
+	\noindent
+	\refstepcounter{exercises}
+	{\color{Periwinkle}\textbf{Exercise \theexercises#1}  } 
+	\vspace{3mm}
+	
+	\noindent
+}{
+}
+
+
+\tcolorboxenvironment{exercise}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!90!Periwinkle},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{Periwinkle},
+	sharp corners,
+	before skip=10pt,
+	after skip=10pt,
+	breakable,
+}
+
+\newcounter{examples}
+\numberwithin{examples}{chapter}
+\newenvironment{example}[1]{
+	\bfcolor{Periwinkle}
+	\noindent
+	\refstepcounter{exercises}
+	{\color{Periwinkle}\textbf{Example \theexamples#1}  } 
+	\vspace{3mm}
+	
+	\noindent
+}{
+}
+
+
+\tcolorboxenvironment{example}{
+	boxrule=0pt,
+	boxsep=0pt,
+	colback={White!90!Periwinkle},
+	enhanced jigsaw, 
+	borderline west={2pt}{0pt}{Periwinkle},
+	sharp corners,
+	before skip=10pt,
+	after skip=10pt,
+	breakable,
+}
