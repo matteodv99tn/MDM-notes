@@ -1,0 +1,20 @@
+%\chapter{Appendix}
+\section{Properties of the Laplace transform}
+	
+	\begin{table}[bht]
+	\centering
+	\begin{tabular}{c |c |c}
+		\# & $f(t)$ & $\laplace{f(t)}(s)$ \\ \hline
+		1 & $a\, f(t) + b \, g(t)$ & $a \, \hat f(s) + b \, \hat g(s)$ \\ 
+		2 & $f(at)$ & $\frac 1 a \hat f\left(\frac s a\right)$ \\
+		3 & $e^{at}f(t)$ & $\hat f(s-a)$ \\
+		4 & $f(t-a)$ & $e^{-as} \hat f(s)$ \\
+		5 & $\int_0^t f(z)\, dz$ & $\frac 1 s \hat f(s)$ \\
+		6 & $f'(t)$ & $s \hat f(s) - f(0^+)$ \\
+		7 & $f''(t)$ & $s^2 \hat f(s) - f'(0^+) - s f(0^+)$ \\
+		8 & $\frac {d^n}{dt^n}f(t)$ & $s^n \hat f(s) - \sum_{j=0}^{n-1} s^{n-j-1} f^{(j)}(0^+) $ \\
+		9 & $t^n \, f(t)$ & $(-1)^n \frac{d^n}{ds^n} \hat f(s)$
+	\end{tabular}
+	\caption{useful properties of the Laplace transform.} \label{app:lap:properties}
+	\end{table}
+
