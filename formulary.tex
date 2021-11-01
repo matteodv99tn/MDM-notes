@@ -8,14 +8,21 @@
 \usepackage[width=17.00cm, height=25.00cm]{geometry}
 \usepackage{multicol}
 \usepackage{sidecap}
+\usepackage{array}
 
 \graphicspath{{Images/}}
+
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}m{#1}}
 
 
 
 \begin{document}
 
 	\input{Formulary/fatigue.tex}
-
+	
+	\input{Formulary/shaft.tex}
 	
 \end{document}
