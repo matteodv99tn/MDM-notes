@@ -75,7 +75,8 @@ In practise we need to chose proper **IT grades** in the deviation from nominal 
 
 The analysis of infinitesimal elements subject to proper boundary conditions and assuming $r_o \approx R_i \approx r_c$ leads to a interference-pressure relation of the form
 $$i = p_c r_c \left( \frac 1{E_2} \frac{R_o^2+r_c^2}{R_o^2-r_c^2} + \frac{\nu_2}{E_2} + \frac 1{E_1} \frac{r_c^2+r_i^2}{r_c^2-r_i^2} - \frac{\nu_1}{E_1}\right) $$
-The value of $p_{c,max}$ is computed considering $\sigma_{eq} = |\sigma_r - \sigma_\theta| = 2p_{c,max} \frac{R_o^2}{R_o^2-r_c^2} = \frac{\sigma_{ys}}\phi$. 
+The value of $p_{c,max}$ is computed considering
+$$\sigma_{eq} = |\sigma_r - \sigma_\theta| = 2p_{c,max} \frac{R_o^2}{R_o^2-r_c^2} = \frac{\sigma_{ys}}\phi$$ 
 
 Hub and shaft are mounted by hub eating, shaft cooling or shot pressing. Not that after the device has been mounted, the pressure distribution is not uniform, so special design measures should be used to avoid stress concentration.
 
