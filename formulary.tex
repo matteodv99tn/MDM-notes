@@ -9,6 +9,16 @@
 \usepackage{multicol}
 \usepackage{sidecap}
 \usepackage{array}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{subcaption}
+\usepackage[margin = 1cm]{caption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumerate}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{arydshln}
+
 
 \graphicspath{{Images/}}
 
@@ -17,12 +27,47 @@
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{R}[1]{>{\raggedright\arraybackslash}m{#1}}
 
+\graphicspath{{Images/}}
+\captionsetup{font = {it, small}, labelfont={color=NavyBlue, bf}}
+
+\usepackage[osf,sc]{mathpazo}
+\usepackage[scaled=0.90]{helvet}
+\usepackage[scaled=0.85]{beramono}
+
+\newcommand{\szz}{\sigma_{zz}}
+\newcommand{\ezz}{\varepsilon_{zz}}
+\newcommand{\tlz}{\tau_{\lambda z}}
+\newcommand{\smax}{\sigma_{max}}
+\newcommand{\smin}{\sigma_{min}}
+\newcommand{\sm}{\sigma_{m}}
+\newcommand{\sa}{\sigma_{a}}
+\newcommand{\sall}{\sigma_{all}}
+\newcommand{\seq}{\sigma_{eq}}
+\newcommand{\sys}{\sigma_{ys}}
+\newcommand{\suts}{\sigma_{uts}}
 
 
 \begin{document}
-
-	\input{Formulary/fatigue.tex}	
-	\input{Formulary/shaft.tex}
-	\input{Formulary/threads.tex}
 	
+	\input{Formylary/stresses.tex} \clearpage
+	\input{Formulary/fatigue.tex} \clearpage
+	\input{Formulary/shaft.tex}\clearpage
+	\input{Formulary/threads.tex}\clearpage
+	\input{Formulary/welds.tex}
+	
+	
+	
+	\clearpage
+	\section{Exercises}	
+	\input{Exercises/staticdesign.tex}
+	\input{Exercises/fatigue1.tex}
+	\input{Exercises/fatigue2.tex}
+	\input{Exercises/pressfit.tex}
+	\input{Exercises/boltedjoint.tex}
+	\input{Exercises/gasket.tex}
+	\input{Exercises/boltedjoint2.tex}
+	\input{Exercises/weld.tex}
+	
+	\clearpage
+	\tableofcontents
 \end{document}
