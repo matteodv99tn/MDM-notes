@@ -53,17 +53,44 @@ $$ \alpha_a = \frac{F_{max}}{F_{min}} $$
 the **tightening factor**, a value that can also be used as a measure to _how much to oversize the bolt_.
 
 # Bolted joint verification of a single screw
-Bolts must be verified at **resistance** (we need to prevent screw/member failure) and **stiffness** (we want to prevent the separation of relative sliding of the members the need to be joined).
+Bolts must be verified at **resistance** (we need to prevent screw/member failure) and **stiffness** (we want to prevent the separation of relative sliding of the members the need to be joined). The principal **failure modes** are:
+- net-tension of the minimum cross-section;
+- tear-out of the plate (plastic deformation wasn't enough to handle the load);
+- punching shear of the head inside the member.
 
-## Tensile joint
+## Shear joint
+In case of tensile joints we should watch for:
+- **sliding resistance** that ensures that the preload maintans member in contact with sufficient friction to avoid sliding; given a preload $N_0$, a separating action $N_b$ acting on the bolt and $n$ surfaces in contact then we require
+	$$ V_b \leq \frac{k_s n f}\phi\big(N_0 - 0-8N_b\big) $$
+	where $k_s$ is a coefficient dependent on the hole type and $\phi$ is chosen by EUROCODE3 to be 1.1-1-25;
+- **shear resistance** checks that the bolts cross section subjected to shear do not _shear-out_, implying
+	$$ V_b \leq \frac{\sigma_{uts}A_b}{\phi}$$
+	where $\phi = \frac{1.25}{0.6}$ by EUROCODE3; $A_b$ is the bolts cross section subject to shear;
+- **crushing resistance** associated to the member thickness:
+	$$ V_b \leq \frac{\sigma_{uts, member} dt}\phi $$
+	where $\phi = 0.5$ by EUROCODE3.
 
+## Tensile joints
+In case of tensile joints we must watch for:
+- **tension resistance**, verification of the plain axial load acting on the screw:
+	$$ N_b \leq \frac{\sigma_{uts}A_{bt}}\phi $$
+	where $\phi = \frac{1.25}{0.9}$ by EUROCODE3;
+- **punching resistance** of the head against the members:
+	$$ N_b \leq \frac{\pi d_0 t \sigma_{uts,member}}\phi$$
+	with $\phi = \frac{1.25}{0.6}$ by EUROCODE3, $d_0$ the bolts head diameter and $t$ the member thickness.
 
+## Fundamentals of tensile joint verification
+A more accurate model to understand load distribution and required preloads is based on the computation of the **interference** $i = l_{0f} - l_{0b} = \Delta l_b - \Delta l_f$ between bolt+nut and the members considering the equivalent stiffnesses of the bodies. 
 
+For what concerns the bolt, we consider the different section making up such _beam_ and compute the equivalent stiffness as
+$$ K_b = \left( \sum_i \frac{l_i}{EA_i} \right)^{-1} $$
+Modelling members is more complex due to the nature of the stress distribution; based on experimental studies, the region thats more heavily affected by the loads are in a cone of angle $\alpha \simeq 30^\circ$. _Slicing_ each part of the member, the stiffness is
+$$ k_{f,i} = \frac{\pi Ed\tan\alpha}{\ln\left(\frac{D-d}{D+d} \frac{d_0+d}{d_0-d}\right)} \qquad \Rightarrow \qquad K_f = \left( \sum_i \frac 1 {K_{f,i}}\right)^{-1} $$
 
-
-
-
-
+When assembled the bolt elongates, while the members are in compressions, leading to an equilibrium position that gives us the actual preload on the system. We have that the **tightening intererence** is 
+$$ i_s = \Delta l_b - \Delta l_f = N_0 \frac{K_f-K_b}{K_fK_b}$$
+leading to 
+$$ \Delta l_b = i_s \frac{K_f}{K_f+K_b} \qquad \Delta l_f = - i_s \frac{K_b}{K_f+K_b} $$
 
 
 
