@@ -61,10 +61,7 @@ where 235 is the minimum yield strength in $MPa$ for a specimen thickness of $16
 This joint do not guarantee the structural continuity of the members, thus it's necessary to define a proper resiting cross section. In this case the stress-state is very complex with high notch effects, however analysing static loading we assume that some plasticization might occur, uniforming so the stress-state.
 
 For verification purpouses, we refer the stress components to the **overturned throat area**. In this case we have two failure critation verification: one determined by a Von-Mises equivalent stress, and another equation truncating the associated sphere
-$$\begin{cases} 
-	\sqrt{\sigma_\perp^2 + \tau_\perp^2 + \tau_\parallel^2} \leq \nu_1 \sigma_{all} \\
-	|\sigma_\perp| + |\tau_\perp| \leq \nu_2 \sigma_{all}
-\end{cases}$$
+$$\begin{cases} \sqrt{\sigma_\perp^2 + \tau_\perp^2 + \tau_\parallel^2} \leq \nu_1 \sigma_{all} \\ |\sigma_\perp| + |\tau_\perp| \leq \nu_2 \sigma_{all} \end{cases}$$
 with coefficients $\nu_1 < \nu_2$ that are tabled based on the material designation.
 
 ### Fatigue
