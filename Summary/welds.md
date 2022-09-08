@@ -50,7 +50,7 @@ Fatigue won't be analysed in detail here, but it's shown that the endurance limi
 This joint restores the structural continuity of the memebers, thus it's easier to defined a proper resisting cross-sectional area.
 
 The main component acting on full-penetration joints are $\sigma_\parallel, \sigma_perp$ and a shear $\tau$; exploiting the Von-Mises criterion we define the equivalent stress
-$$ \sigma_{eq} = \sqrt{\sigma_\parallel^2+ \sigma_\perp^2 + \sigma_\parallel\sigma_\perp + 3\tau^2} \leq \sigma_{weld, all} = \nu \sigma_{all} $$
+$$\sigma_{eq} = \sqrt{\sigma_\parallel^2+ \sigma_\perp^2 + \sigma_\parallel\sigma_\perp + 3\tau^2} \leq \sigma_{weld, all} = \nu \sigma_{all} $$
 In this case $\nu$ is a **weakening coefficient** that's equal to 1 for _first class_ welds (higher quality) and 0.85 for _second class_ (lower quality) welds; $\sigma_{all}$ is instead the allowable strength that's tabled depending on the material used for the members.
 
 For the material designation, following the EUROCODE3 standard, structural steel designation are described as
@@ -61,7 +61,7 @@ where 235 is the minimum yield strength in $MPa$ for a specimen thickness of $16
 This joint do not guarantee the structural continuity of the members, thus it's necessary to define a proper resiting cross section. In this case the stress-state is very complex with high notch effects, however analysing static loading we assume that some plasticization might occur, uniforming so the stress-state.
 
 For verification purpouses, we refer the stress components to the **overturned throat area**. In this case we have two failure critation verification: one determined by a Von-Mises equivalent stress, and another equation truncating the associated sphere
-$$ \begin{cases} 
+$$\begin{cases} 
 	\sqrt{\sigma_\perp^2 + \tau_\perp^2 + \tau_\parallel^2} \leq \nu_1 \sigma_{all} \\
 	|\sigma_\perp| + |\tau_\perp| \leq \nu_2 \sigma_{all}
 \end{cases}$$
