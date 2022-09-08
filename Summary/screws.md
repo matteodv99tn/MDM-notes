@@ -61,7 +61,7 @@ Bolts must be verified at **resistance** (we need to prevent screw/member failur
 ## Shear joint
 In case of tensile joints we should watch for:
 - **sliding resistance** that ensures that the preload maintans member in contact with sufficient friction to avoid sliding; given a preload $N_0$, a separating action $N_b$ acting on the bolt and $n$ surfaces in contact then we require
-	$$V_b \leq \frac{k_s n f}\phi\big(N_0 - 0-8N_b\big) $$
+	$$V_b \leq \frac{k_s n f}\phi\big(N_0 - 0.8N_b\big) $$
 	where $k_s$ is a coefficient dependent on the hole type and $\phi$ is chosen by EUROCODE3 to be 1.1-1-25;
 - **shear resistance** checks that the bolts cross section subjected to shear do not _shear-out_, implying
 	$$V_b \leq \frac{\sigma_{uts}A_b}{\phi}$$
@@ -91,34 +91,39 @@ When assembled the bolt elongates, while the members are in compressions, leadin
 $$i_s = \Delta l_b - \Delta l_f = N_0 \frac{K_f-K_b}{K_fK_b}$$
 leading to 
 $$\Delta l_b = i_s \frac{K_f}{K_f+K_b} \qquad \Delta l_f = - i_s \frac{K_b}{K_f+K_b} $$
+Another assumption that can be made is that the members are infinitely stiff ($K_f \gg K_b$), implying that only the bolt deformes in the final assembly.
 
+If we in general consider that on top of the preload $N_0$ there's applied a separating action $N$, then the axial load of the bolt $N_b$ increases, relieving the actions $N'$ on the members following the law
+$$N_b = N_0 + N\frac{K_b}{K_f+K_b} \qquad N' = N_0 - N\frac{K_f}{K_f+K_b}$$
+For a more detailed sliding resistance criterion, use $N'$ instead of the reported value $N_0 - 0.8N$
 
+# Analysis of Bolted Joints: multiple screws
+In presence of multiple screws we assume **rigid members** and **deformable bolts**; the external forces that must be transferred are applied on the **centroid** of the bolts.
 
+### Sliding actions
+In case of shear load we assume that each bolt bear a load proportional to its cross-sectional area; given that the sum must give the force $V$, we obtain
+$$V_i = V \frac{A_{b,i}}{\sum_i A_{b,i}} $$
+Each component is parallel in direction to the value of $V$.
 
+Considering instead a torque $T$ that need to be transmitted, the shear loads $V_i$ on each bolt are proportional to the cross-sectional area and the distance $r_i$ from the centroid, leading to a formulation
+$$V_i = T \frac{A_{b,i}r_i}{\sum_i A_{b,i}r_i^2}$$
 
+### Separating actions
+In case of normal loads, as for shear we have
+$$N_i = N \frac{A_{b,i}}{\sum_i A_{b,i}} $$
+Analysing bending moment is instead a little more tricky; multiple teories have been developed, such:
+- **rigid members** hypothesis: in this case the preload is neglected and the axial load on each bolt is proportional at the cross-sectional area and the distance $h_i$ of the pivot point that is consider to be the extremal point where the connection can rotate according to the direction of the bending torque $M_b$:
+	$$N_i = M_b \frac{A_{b,i}h_i}{\sum_iA_{b,i}h_i^2} $$
+- **semi-rigid members** hypothesis: in this case normal load and bending moment must be analysed togheter. Given a stress distribution
+	$$ \sigma = - \sigma_{max,co} \left(1 - \frac y{y_n}\right) $$
+	where $\sigma_{max,co}$ and $y_n$ are unknowns representing the maxmimum value of the stress and the position of the neutral axis, then we want to define those values matching both normal and bending loads. Note that by changing $y_n$ we also change also the number of _active bolts_. The general problem that we need to solve is
+	$$\begin{cases} \int_0^{A(y_n)} \sigma(y)\, dA + \sum_i - \sigma_{max,co} \left(1 - \frac {y_i}{y_n}\right) A_{b,i} = N \\ \int_0^{A(y_n)} \sigma(y) \big(y - y_n\big)\, dA + \sum_i - \sigma_{max,co} \left(1 - \frac {y_i}{y_n}\right)\big(y_i - y_n\big) A_{b,i} = M_b + N \big(y_g-y_n\big)\end{cases}$$
+- a simplified approach of the semi-rigid members is to simply mvoe the pivot point at $h/4$ of the the flange height or simply at the first row of the bolts (and use the rigid members computations based on that pivot point). 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Fatigue
+Usually fatigue failure is localized in the first three threads of the bolts that are the one bearing more load. Given a pulsating normal load $N(t) = N_m + \frac{\Delta_N}2\cos(\omega t+\varphi)$, exploiting the equivalent stiffnesses of both member and bolt we can deduce the bolts load cycle mean and amplitude values as
+$$\sigma_{a,nom} = \frac 1{2A_{bt}} \frac{K_b}{K_b+K_f} \Delta_N \qquad \sigma_{m,nom} = \left( N_0 + \frac{K_b}{K_n+K_b} N_m\right)\frac 1{A_{bt}}$$
+The amplitude stress is amplified by a notch factor $K_f$ of $2.2$ for medium-low strength bolts (class $<5.8$) up to the value 3 for high strength bolt.
+	
 
 
