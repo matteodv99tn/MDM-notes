@@ -43,7 +43,7 @@ $$W_f = T_f \omega = f F \frac d2 \omega = fFv = f p_l bd v $$
 The heat transferred through the surroundings can be regarded as $W_\alpha = \alpha A \big( T_{oil}-T_{amb}\big)$, where $A$ is the exchange area and $\alpha \backsim 11-35 W \cdot m^{-1} \cdot K^{-1}$ is the heat coefficient.
 
 The heat transferred due to the volumetric oil flow $Q$ of a lubricant with density $\rho$ and thermal capacity $C_p$ is 
-$$ W_o = Q \rho C_p \big(T_{out} - T_{in} \big) $$
+$$W_o = Q \rho C_p \big(T_{out} - T_{in} \big) $$
 
 Usually this last term is negligible, thus we have to equate $W_f$ with $W_\alpha$. Solving $\alpha \pi db\big(T_{oil} - T_{amb}\big) = fp_l bdv$ gives us that
 $$\big(T_{oil}-T_{amb}\big) = \frac f{\pi \alpha} p_l v \leq \Delta T_{all} $$
