@@ -49,3 +49,103 @@ Usually this last term is negligible, thus we have to equate $W_f$ with $W_\alph
 $$\big(T_{oil}-T_{amb}\big) = \frac f{\pi \alpha} p_l v \leq \Delta T_{all} $$
 Having a limited allowed temperature difference, but the only parameter not known at catalogue are $p_l$ and $v$, the standard verification at overheating is performed as
 $$p_lv \leq \big(p_l v\big)_{all} $$
+
+### Functionality: journal slope
+To avoid excessive wear, journal are allowed to have up to a maximum angular deflection (slope) that, based on the geomety, is evaluated as
+$$\tan\beta = \frac{D-d}b = \frac{D-d}d\frac db = \psi \frac db$$
+where $\psi$ is the relative clearance of the journal bearings. Usually components requires $\tan \beta \leq 0.1$.
+When this cannot be achieved, a solution might be to use self-aligning journal bearings (whose construction internally for more slope compensation).
+
+### Minimum film thickness
+A continuous and stable fluid film is required to ensure proper functionality of the bearing. The **film thickness** must so be defined ad usually depends on the surface finishes of both journal and bearing.
+
+Due to the eccecentricity of the journal, there's an asymmetric pressure thats complicating the analysis. Assuming fluids as newtonian, incompressible and subjected to laminar flow analytical solution exists only for the simplest case.
+For any other generical case we use numerical results that have been tabled for us based on the Sommerfeld number $S_o$ in the so called **Raimondi-Boyd charts**.
+
+### Proposed design steps
+1. define the journal diameter by overloading analysis:
+	$$d^3 \geq \sqrt{\frac F {p_{all} \frac bd}} $$
+	Usually the coefficient $\frac bd$ is chosen based on the application: small values if we want to allow for more deflection, higher if we want to increase load bearing capability;
+1. recalling $\psi = \frac{D-d}d$ and $C_r = \psi \frac d2$, select a proper bushing material, lubricant and radial clearance;
+1. estimate the Sommerfeld number with tentative values of the oil:
+	$$S_o = \left(\frac r{C_r}\right)^2 \frac{\nu n}{p_l} $$
+1. use Raimondi-Boyd charts to estimate the friction coefficient $f$, the minimum film thickness $h_{min}$ and other parameters (such required input oil flow $Q$ and leakage $Q_s$);
+1. choose a film thickness compatible with the roughness of the material, so 
+	$$h_{min} \geq R_{max, journal} + R_{max, bearing}$$
+1. compute the heat loss by friction $W_f = f p_l bdv$;
+1. check the heat balance $W_\alpha + W_o = W_f$ (where $W_\alpha$ is the heat exchanged by the surroundings, $W_o$ the one due to the oil flow);
+1. solve the power problem to get the working oil temperature;
+1. verify the viscosity compliance.
+
+Iterate until convergence.
+Usually oil-fill channels are placed inside the bushing on parts that are less subjected to high pressure.
+
+## Hydrostatic lubrication
+For hydrostatic bearings the relative motion between journal and bearing is not required (as pressure is not speed dependent); in fact pressure is generated from external pumps.
+
+This type of bearing is good due to it's high precisione, the vibration isolation and the ability to have motion reversal at constant (low) friction coefficient: for this reason it's mainly used in machine tools (for mandrels), in heavy machine shafts or linear guides.
+
+# Rolling (contact) Bearings
+As for journal bearins, **roller bearings** allows for relative rotary motion between machine parts and allows the transmission of radial and/or thrust loads.
+
+Rolling bearings are classified according to the type of rolling element (that can either be **balls** or **cylinders/needles**, called simply ***rollers***) and the load type that they can bear (if it's mainly radial/thrust or a combination of both).
+
+With respect to journal bearings, contact bearings comes with few advantages:
+- they have a low startup friction;
+- are easier to be installed, maintained and lubricated;
+- can tolerate some temporary lubricant loss (still with higher wear of the component);
+- have a very high standardization;
+- are versatile and axially small;
+- ropture can ne notices by an increase of noise.
+
+However this comes with some bad notices:
+- they have an higher radial dimension and generate more noise;
+- cannot work at high speeds;
+- are environmentally sensitive;
+- have an higher cost and weigth;
+- have a limited fatigue life.
+
+## Bearings classification
+**Ball** and **roller bearings** come in a lot of configuration (deep grove, angular contact, gour contact point, external selg-aligning, double row...) that are determining **different load bearing** and **maximum slope** capability.
+
+As general difference, roller bearings (w.r.t. ball b.) are usually smaller and can bear more load, but are less standardized; they can also usually bear load at higher rotational speeds.
+For this reasons usually the choiche of the bearing type is based on charts that are relating the shaft speed with the radial load.
+
+Using other charts, depending on the chosen bearing type we can also select proper outer ring diameter $D$ based on the maximum allowable rotation speed $n_g$. In particular we observe that the product $D\, n_g = DN$ is a constant that depends on the bearing type; usually for radial load bearings $DN \in [0.5\cdot10^6, 10^6]$, while for axial/thrust loads $DN\in[0.25\cdot 10^6, 0.5\cdot 10^6]$.
+We also observe that, given the same size, roller bearing can support heavier axial loads (but lower thrust) riwth respect to ball bearings.
+Moreover for application where theres mainly axial load, special balls/roller configuration can be used.
+
+## Ordering information
+While ordering contact bearings, based on standard, we need to specify the **configuration** of the rolling elements, the **dimension series** (two parameters describing respectively width and relative distance of inner/outer rings, based on regulations) and the **diameter series** value specifying the diameter of the outer ring.
+
+It's also necessary to define **tolerances** for the the bearing that, according to ISO 1132, are P6, P5, P4 (where this last one is the tightest); we should also specify the **radial clearance** based on one of the **6 SKF classes**, the cage type, the enclosure/seal of the folling elements, the operating temperature range and the material.
+
+## Design and verification
+While designing contact bearings we always need to consider:
+- the **load capability**, considering both static loading (that might lead to plasticization) and fatigue (due to the rotation of the elements). We need to recall that the load is transferred by _point_ contact of the rolling elements against the rings, generating high localized pressure zone (leading to plasticization);
+- the **mounting** configuration based on the load direction (axial/radial);
+- the lubrication;
+- enclosures and sealings.
+
+### Static verification
+Static verification should be applied for (quasi) still bearings subjected to constant/impulsive loads, shafts subjected to load speeds and short life or in general components subkected to severe impact loading.
+
+Based on empirical values reported in catalogues, the **static safety factor** $f_s$ of the bearings is computed as 
+$$f_s = \frac{C_0}{P_0}$$
+where $C_0$ is the static load capacity (reported in the catalog) and $P_0$ is the load of acting on the shaft computed as $X_0 F_{r0} + Y_0F_{a0}$, where $F_{r0},F_{a0}$ are respectively the radial and axial loads and $X_0, Y_0$ are the **influence factor** that are reported in the catalogues.
+
+### Fatigue verification
+Due to the cyclic nature of the contact we might have **pitting** and sub-surface **crack initiation** and **propagation**; usually damage happens on the races of the component and the malfunctioning can be noticed by a higher noise.
+
+In general to compute the fatigue life of the component we use proper diagrams. Calling $L_{10}$ the line of 10% failure rate (90% of reliability) at $10^6$ cycles, then the value is defined as
+$$L_{10} = \left( \frac CF\right)^n$$
+where $C$ is the dynamic load coefficient, $F=X F_r + YF_a$ is the equivalent dynamic load and $n$ is a constant equal to $3$ for ball bearing and $\frac {10}3$ for roller bearings.
+Usually influence factors are described in the catalogue as function of the ratio $F_a/F_r$ as well as the ratio between the overall force $F/F_r$.
+For variable-amplitude loading we can compute the expected life by means of a linear damage method.
+
+The definition of the life-time equation can be _extended_ also to consider different reliabilities coefficients ($a_1$) and differente service conditions ($a_2,a_3$):
+$$L_{NA} = a_1 a_{23}\left(\frac C{F_{eq}}\right)^n$$
+where coefficients $a_1, a_{23}=a_1a_2$ are tabled.
+
+To let bearing properly work, a minimum applied load is required, especially in case of rapid acceleration/stops; the minimum suggested load is $0.01C$ for ball bearings and $0.02C$ for roller bearings. Ig the minimum applied load cannot be achieved by the machine, then smalled dimension series for the bearings is suggested; other counter-measures are choosing proper lubricants or apply some preloads.
+
